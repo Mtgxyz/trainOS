@@ -23,8 +23,10 @@ CXXFLAGS = -std=c++11 -fno-stack-protector -fno-use-cxa-atexit -nostdlib -fno-bu
 LDFLAGS  = -nostdlib -fno-builtin -Tkernel.ld
 
 # Targets
-all: kernel
+all: obj/ kernel
 
+obj/:
+	mkdir obj
 .PHONY: clean
 clean:
 	$(RM) obj/dynamic.o obj/intr_common_handler.o obj/multiboot.o obj/start.o obj/console.o obj/init.o obj/interrupts.o obj/malloc.o obj/pmm.o obj/serial.o obj/stdlib.o obj/timer.o obj/vmm.o obj/cplusplus.o obj/vm.o obj/cpustatetype.o obj/io.o
