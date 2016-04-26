@@ -23,11 +23,13 @@ CXXFLAGS = -std=c++11 -fno-stack-protector -fno-use-cxa-atexit -nostdlib -fno-bu
 LDFLAGS  = -nostdlib -fno-builtin -Tkernel.ld
 
 # Targets
-all: obj/ kernel
+all: prereqs kernel
 
-obj/:
+prereqs:
 	mkdir obj
-.PHONY: clean
+	git clone https://github.com/MasterQ32/ker
+	mv ker/* .
+.PHONY: clean all prereqs
 clean:
 	$(RM) obj/dynamic.o obj/intr_common_handler.o obj/multiboot.o obj/start.o obj/console.o obj/init.o obj/interrupts.o obj/malloc.o obj/pmm.o obj/serial.o obj/stdlib.o obj/timer.o obj/vmm.o obj/cplusplus.o obj/vm.o obj/cpustatetype.o obj/io.o
 
